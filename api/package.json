@@ -1,0 +1,20 @@
+{
+  "name": "music-api",
+  "version": "1.0.0",
+  "description": "api-for-music-app",
+  "main": "music.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Chenery",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "multer": "^1.3.0",
+    "sqlite3": "^4.0.0"
+  },
+  "devDependencies": {
+    "gulp-nodemon": "^2.2.1"
+  }
+}

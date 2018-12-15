@@ -1,0 +1,116 @@
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title">Form</div>
+            </div>
+        </div>
+
+        <div class="page-content">
+
+            <div class="block-title">Add a listing for an item you wish to sell</div>
+            <div class="list no-hairlines-md">
+                <form class="list" id="my-form">
+                    <!-- list to get a value for each field of the selling table, so that it can be added to the database properly, allowing it to be viewed in the other area of the site -->
+                    <ul>
+                        <li>
+                            <!-- get the filename of the file being added through use of javascript -->
+                            <input class="button button-big button-fill" type='file' name="image1" id="image1" onchange="document.getElementById('image').value = this.value">
+                            <script>
+                                function myFunction() {
+
+                                    var path = image;
+                                    var image = path.replace(/^.*\\/, "");
+                                    console.log(image);
+                                }
+                            </script>
+
+                        </li>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Filename</div>
+                                    <div class="item-input-wrap">
+                                        <!-- add the previously attained filename to the form -->
+                                        <input type="text" name=image id=image />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Seller Email</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="example@gmail.com" name="email" id="email" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Condition</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="Nearly New" name="condition" id="condition" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Description</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="1980 Edition" name="description" id="description" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Price</div>
+                                    <div class="item-input-wrap">
+                                        <input type="text" placeholder="£10" name="price" id="price" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </form>
+
+            </div>
+            <div class="block block-strong">
+                <p class="row">
+                    <a class="col button button-fill" @click="alert()">Add listing</a>
+                </p>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</template>
+
+<script>
+    return {
+        // Component Methods
+
+        methods: {
+            alert: function () {
+                app.dialog.alert('Submitted');
+                // https://framework7.io/docs/form.html
+                var formData = app.form.convertToData('#my-form');
+                //alert(JSON.stringify(formData));
+                app.request.postJSON('http://localhost:3000/addselling', formData);
+            }
+        }
+    }
+</script>

@@ -1,0 +1,62 @@
+<template>
+
+    <!-- <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head> -->
+    <div class="page" data-name="catalog">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title">{{music.albumname}}</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">About</div>
+
+            <div class="card-content-padding">
+                {{music.albumname}} - {{music.artist}}: Released in {{music.year}}
+            </div>
+
+            
+
+            <!-- <div class="block">
+                {{music.year}}
+            </div> -->
+
+        </div>
+        <div class="card">
+            <div class = "card-content">
+            <img src={{music.image}} width = "400">
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            var musicid = this.$route.params.id;
+            console.log(musicid);
+            var currentmusic;
+            this.$root.music.forEach(function (music) {
+
+                console.log('the parameter id is ' + musicid);
+                console.log('the current album id is ' + music.id);
+
+
+                if (music.id == musicid) {
+                    currentmusic = music;
+                    console.log('matched record');
+                    console.log(currentmusic);
+                }
+            });
+            return {
+                music: currentmusic,
+            };
+        }
+    };
+</script>

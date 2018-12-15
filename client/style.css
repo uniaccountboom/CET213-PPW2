@@ -1,0 +1,19 @@
+/* img {
+    position: relative;
+    float: left;
+    width:  600px;
+    height: 600px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+} */
+.list links-list
+{
+    height: 600px;
+}
+
+.card
+{
+    text-align: center;
+    float:left;
+}

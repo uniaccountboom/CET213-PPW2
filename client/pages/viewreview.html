@@ -1,0 +1,49 @@
+<template>
+
+
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title">Album Reviews</div>
+            </div>
+        </div>
+        <div class="page-content">
+
+            <div class="block block-strong">
+                <p>User Reviews:</p>
+            </div>
+
+            <div class="list inset">
+                <ul>
+                    <!-- for each item in the review database, add it to the list -->
+                    {{#each $root.review}}
+                    <li>
+                        <!-- add it using a framework7 card -->
+                        <div class="card">
+                            <div class="card-header">
+                                Album Name: {{albumname}}
+                            </div>
+                            <div class="card-header">
+                                Rating: {{rating}}
+                            </div>
+                            <div class="card-content card-content-padding">
+                                {{reviewtext}}
+                            </div>
+                        </div>
+
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+</template>

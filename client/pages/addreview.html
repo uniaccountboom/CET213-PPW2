@@ -1,0 +1,87 @@
+<template>
+        <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner sliding">
+            <div class="left">
+              <a href="#" class="link back">
+                <i class="icon icon-back"></i>
+                <span class="ios-only">Back</span>
+              </a>
+            </div>
+            <div class="title">Form</div>
+          </div>
+        </div>
+      
+        <div class="page-content">
+      
+          <div class="block-title">Add a review for an album</div>
+          <div class="list no-hairlines-md">
+              <form class="list" id="my-form">
+            <ul>
+            
+              <li>
+                <div class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Album Name</div>
+                    <div class="item-input-wrap">
+                      <input type="text" placeholder="Album Name" name="albumname" id="albumname" />
+                    </div>
+                  </div>
+                </div>
+              </li>
+               
+              <li>
+                <div class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Album Rating</div>
+                    <div class="item-input-wrap">
+                      <div class="range-slider range-slider-init" data-label="true">
+                        <input type="range" name="rating" value="5" min="1" max="10" step="1">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                    <div class="item-content item-input">
+                      <div class="item-inner">
+                        <div class="item-title item-label">Review Description</div>
+                        <div class="item-input-wrap">
+                          <input type="text" placeholder="Review Description" name="reviewtext" id="reviewtext" />
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+      
+      </ul>
+      </form>
+      
+      </div>
+          <div class="block block-strong">
+            <p class="row">
+            <a class="col button button-fill" @click="alert()">Add review</a> 
+            </p>
+          </div>
+           
+          
+          
+        </div>
+      </div> 
+       
+      </template>
+      
+      <script>
+        return { 
+          // Component Methods
+      
+          methods: {
+          alert: function() {
+            app.dialog.alert('Submitted');
+            // https://framework7.io/docs/form.html
+            var formData = app.form.convertToData('#my-form');
+            //alert(JSON.stringify(formData));
+            app.request.postJSON('http://localhost:3000/addreview', formData);
+          }
+          }
+        }
+      </script>
